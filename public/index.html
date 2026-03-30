@@ -910,6 +910,7 @@
       </div>
     </section>
 
+    <!-- RSVP 섹션 비활성화
     <section class="section rose">
       <h2 class="headline">RSVP</h2>
       <p class="small">참석 의사를 전달해 주세요</p>
@@ -917,6 +918,7 @@
         <button type="button" class="btn primary" id="rsvpModalOpen" aria-haspopup="dialog" aria-controls="rsvpModalDialog">참석 의사 체크하기</button>
       </div>
     </section>
+    -->
 
     <footer class="footer">
       <a class="btn primary btn-copy-invite-url" href="#">
@@ -930,6 +932,7 @@
     </footer>
   </main>
 
+  <!-- RSVP 모달 비활성화
   <div class="rsvp-modal" id="rsvpModal" aria-hidden="true">
     <div class="rsvp-modal__overlay" id="rsvpModalOverlay" tabindex="-1"></div>
     <div class="rsvp-modal__dialog" id="rsvpModalDialog" role="dialog" aria-modal="true" aria-labelledby="rsvpModalTitle" aria-describedby="rsvpModalLead" tabindex="-1">
@@ -990,6 +993,7 @@
       </form>
     </div>
   </div>
+  -->
 
   <div class="viewer" id="galleryViewer" aria-hidden="true">
     <div class="viewer-panel" role="dialog" aria-modal="true" aria-label="갤러리 사진 보기">
@@ -1213,7 +1217,7 @@
       // 청첩장 주소 복사
       var inviteBtn = document.querySelector(".btn-copy-invite-url");
       if (inviteBtn) {
-        var inviteUrl = "https://wedding-two-iota.vercel.app/";
+        var inviteUrl = "https://donghahappyday.vercel.app/";
         var prevLabel = inviteBtn.getAttribute("aria-label") || "청첩장 주소 복사하기";
         inviteBtn.addEventListener("click", function (e) {
           e.preventDefault();
