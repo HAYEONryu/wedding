@@ -10,49 +10,50 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toourguest.com/cards/20251122">
   <meta name="theme-color" content="#f7dede">
-  <link rel="stylesheet" href="../css/tailwind-like.css">
+  <link rel="stylesheet" href="css/tailwind-like.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <style>
     @font-face {
       font-family: Suit;
-      src: url("../fonts/SUIT-Light.woff2") format("woff2");
+      src: url("fonts/subset-SUIT-Light.woff2") format("woff2");
       font-weight: 300;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: Suit;
-      src: url("../fonts/SUIT-Regular.woff2") format("woff2");
+      src: url("fonts/subset-SUIT-Regular.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: Suit;
-      src: url("../fonts/SUIT-Medium.woff2") format("woff2");
+      src: url("fonts/subset-SUIT-Regular.woff2") format("woff2");
       font-weight: 500;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: Suit;
-      src: url("../fonts/SUIT-Bold.woff2") format("woff2");
+      src: url("fonts/subset-SUIT-Regular.woff2") format("woff2");
       font-weight: 700;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: Sparkle;
-      src: url("../fonts/Sparkle.woff2") format("woff2");
+      src: url("fonts/Sparkle.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
     @font-face {
       font-family: KoreanHand;
-      src: url("../fonts/Cafe24SsurroundAir-v1.1.woff2") format("woff2");
+      src: url("fonts/Cafe24SsurroundAir-v1.1.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -139,7 +140,7 @@
       min-height: 620px;
       background:
         linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.22)),
-        url("../img/image1.jpg");
+        url("img/image1.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -337,7 +338,23 @@
       border: 1px solid #ddd;
       overflow: hidden;
       max-width: 100%;
-      min-height: 200px;
+      min-height: 360px;
+    }
+    /* 카카오 지도 퍼가기: 루트 폭을 화면에 맞춤 */
+    .map .root_daum_roughmap_landing,
+    .map [id^="daumRoughmapContainer"] {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      box-sizing: border-box;
+    }
+    .map .root_daum_roughmap .wrap_map {
+      max-width: 100% !important;
+    }
+    /* 카카오 퍼가기가 넣는 하단 주소·전화(.cont) 블록 숨김 */
+    .map .root_daum_roughmap .cont {
+      display: none !important;
     }
     .location-address-row {
       display: flex;
@@ -377,6 +394,10 @@
       gap: 10px;
       margin-top: 14px;
     }
+    .btn-row .btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
     .btn {
       display: inline-block;
       border: 0;
@@ -408,7 +429,7 @@
       height: 18px;
     }
     .fund-wrap {
-      margin-top: 20px;
+      margin-top: 28px;
       max-width: 420px;
       margin-left: auto;
       margin-right: auto;
@@ -512,12 +533,186 @@
       margin-bottom: 30px;
     }
     .footer-copy {
-      margin: 6px 0 0;
+      margin: 20px 0 5px;
       text-align: center;
       font-family: Suit, ui-sans-serif, system-ui, sans-serif;
       font-size: 14px;
       color: #999;
     }
+
+    /* RSVP 참석 의사 모달 */
+    .rsvp-modal {
+      font-family: Pretendard, "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+      position: fixed;
+      inset: 0;
+      z-index: 10050;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .rsvp-modal.is-open {
+      display: flex;
+    }
+    .rsvp-modal__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(92, 68, 58, 0.38);
+    }
+    .rsvp-modal__dialog {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 32rem;
+      max-height: min(86vh, 640px);
+      overflow: auto;
+      margin: 0;
+      padding: 40px 22px 32px;
+      background: #f8f8f8;
+      border-radius: 10px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    }
+    .rsvp-modal__dialog:focus { outline: none; }
+    .rsvp-modal__close {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: #6b6b6b;
+      cursor: pointer;
+      opacity: 0.85;
+    }
+    .rsvp-modal__close:hover { opacity: 1; }
+    .rsvp-modal__close:focus-visible {
+      outline: 2px solid #ebadad;
+      outline-offset: 2px;
+    }
+    .rsvp-modal__title {
+      margin: 0;
+      text-align: center;
+      font-size: 1.45rem;
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: rgba(40, 40, 40, 0.92);
+    }
+    .rsvp-modal__lead {
+      margin: 0;
+      padding: 12px 12px 0;
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: #b47b7b;
+    }
+    .rsvp-modal__form {
+      padding: 22px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .rsvp-field__label {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      margin: 0 0 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #666;
+      line-height: 1.3;
+    }
+    .rsvp-field__req {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .rsvp-seg {
+      display: flex;
+      gap: 8px;
+    }
+    .rsvp-seg__btn {
+      flex: 1;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 8px;
+      font: inherit;
+    }
+    .rsvp-seg__btn:focus-visible {
+      outline: 2px solid #ebadad;
+      outline-offset: 2px;
+    }
+    .rsvp-seg__face {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-size: 0.9375rem;
+      background: #fff;
+      color: #999;
+    }
+    .rsvp-seg__btn.is-active .rsvp-seg__face {
+      background: #ebadad;
+      color: #fff;
+    }
+    .rsvp-input {
+      display: block;
+      width: 100%;
+      height: 48px;
+      margin: 0;
+      padding: 0 14px;
+      border: 0;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 0.875rem;
+      background: #fff;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .rsvp-input::placeholder { color: #999; }
+    .rsvp-input:focus-visible {
+      outline: 2px solid #ebadad;
+      outline-offset: 2px;
+    }
+    .rsvp-submit {
+      width: 100%;
+      height: 48px;
+      margin-top: 4px;
+      padding: 0;
+      border: 0;
+      border-radius: 8px;
+      background: #ebadad;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(235, 173, 173, 0.45);
+    }
+    .rsvp-submit:hover { filter: brightness(0.97); }
+    .rsvp-submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+    .rsvp-submit:focus-visible {
+      outline: 2px solid #b47b7b;
+      outline-offset: 3px;
+    }
+
     @media (max-width: 360px) {
       .hero-title { font-size: 42px; }
       .headline { font-size: 32px; }
@@ -536,7 +731,7 @@
       </div>
     </section>
     <div style="text-align:center; margin-top: 40px; margin-bottom: -6px; background:#fff;">
-      <img src="../img/함께걷기.png" alt="함께걷기" style="display:inline-block; width:50%; max-width:150px; height:auto;">
+      <img src="img/함께걷기.png" alt="함께걷기" style="display:inline-block; width:50%; max-width:150px; height:auto;">
     </div>
     <section class="section">
       <p class="small">살아가며 평생의 인연을 만나는 것,</p>
@@ -581,11 +776,35 @@
         </button>
       </div>
       <div class="map">
-        <div id="daumRoughmapContainer1774883666557" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+        <div id="daumRoughmapContainer1774890700711" class="root_daum_roughmap root_daum_roughmap_landing"></div>
       </div>
       <div class="btn-row">
         <a class="btn" href="https://naver.me/FV7Yg9qI" target="_blank" rel="noopener noreferrer">네이버 지도</a>
         <a class="btn" href="https://place.map.kakao.com/8282484" target="_blank" rel="noopener noreferrer">카카오맵</a>
+      </div>
+      <div class="location-detail" style="margin-top:22px; max-width:420px; margin-left:auto; margin-right:auto; text-align:left;">
+        <p style="font-size:15px; font-weight:600; margin:0 0 10px; text-align:center; color:#333;">네비게이션 검색</p>
+        <p class="small" style="margin:0 0 18px; line-height:1.8; color:#555;">▶ [별관주차장] 서소문공원(중구 칠패로 5) / [본관주차장] 브라운스톤서울(중구 청파로 464)</p>
+        <p style="font-size:15px; font-weight:600; margin:0 0 10px; text-align:center; color:#333;">지하철 이용</p>
+        <p class="small" style="margin:0 0 6px; line-height:1.8; color:#555;">▶ 2, 5호선 충정로역 4번 출구 : 도보 3분<br>출구방향으로 70M 직진 후 횡단보도 건너편 브라운스톤서울 3층</p>
+        <p class="small" style="margin:0 0 18px; line-height:1.8; color:#555;">▶ 1, 4호선 서울역 15번출구(공항철도역) : 도보 10분<br>“서울역 서부광장” 방향으로 나오신 후 한국경제신문사 방향 이동 후 맞은편</p>
+
+        <p style="font-size:15px; font-weight:600; margin:0 0 10px; text-align:center; color:#333;">버스 이용</p>
+        <div class="small" style="margin:0; line-height:1.75; color:#555;">
+          <p style="margin:0 0 14px;"><strong style="font-weight:600; color:#444;">한국경제신문사</strong><br>
+            (02516, 02109) [마을] 서대문06<br>
+            [간선] 370, 603<br>
+            [지선] 7011, 7013A, 7013B, 7017, (공항) 6015</p>
+          <p style="margin:0 0 14px;"><strong style="font-weight:600; color:#444;">경찰청·동북아역사재단</strong><br>
+            (13039) [간선] 103, 150, 701, 704, 708, 709, 742, 750A, 750B, 752<br>
+            [지선] 7021, 7024, M7154, (공항) 6005</p>
+          <p style="margin:0 0 14px;"><strong style="font-weight:600; color:#444;">서울역서부</strong><br>
+            (02105) [간선] 173, 261, 262, 463, 503, 604<br>
+            [지선] 7021, 7024</p>
+          <p style="margin:0;"><strong style="font-weight:600; color:#444;">종근당·충정로역</strong><br>
+            (02107) [간선] 172, 472, 603, N51, N62, N73<br>
+            [지선] 7011, 7013A, 7013B, 7017</p>
+        </div>
       </div>
     </section>
 
@@ -630,7 +849,7 @@
     <section class="section dark">
       <h2 class="headline" style="font-size:30px;">마음 전하실 곳</h2>
       <p class="small">소중한 토요일, 전국 각지에서 전해주신<br>따뜻한 마음에 진심으로 감사드립니다.</p>
-      <p class="small" style="margin-top:12px;">부득이 비대면으로 축하를 전하고자<br>하시는 분들을 위해 계좌번호를 남깁니다.<br>너른 양해를 부탁드립니다.</p>
+      <p class="small" style="margin-top:12px">부득이 비대면으로 축하를 전하고자<br>하시는 분들을 위해 계좌번호를 남깁니다.<br>너른 양해를 부탁드립니다.</p>
       <div class="fund-wrap">
         <div class="fund-acc" data-fund-acc>
           <button type="button" class="fund-acc__head" aria-expanded="false" id="fundHeadGroom">
@@ -695,7 +914,7 @@
       <h2 class="headline">RSVP</h2>
       <p class="small">참석 의사를 전달해 주세요</p>
       <div class="btn-row" style="grid-template-columns:1fr;">
-        <a class="btn primary" href="#">참석 의사 체크하기</a>
+        <button type="button" class="btn primary" id="rsvpModalOpen" aria-haspopup="dialog" aria-controls="rsvpModalDialog">참석 의사 체크하기</button>
       </div>
     </section>
 
@@ -710,6 +929,67 @@
       <p class="footer-copy">@Copyright 유하연</p>
     </footer>
   </main>
+
+  <div class="rsvp-modal" id="rsvpModal" aria-hidden="true">
+    <div class="rsvp-modal__overlay" id="rsvpModalOverlay" tabindex="-1"></div>
+    <div class="rsvp-modal__dialog" id="rsvpModalDialog" role="dialog" aria-modal="true" aria-labelledby="rsvpModalTitle" aria-describedby="rsvpModalLead" tabindex="-1">
+      <button type="button" class="rsvp-modal__close" id="rsvpModalClose" aria-label="닫기">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+      <h2 class="rsvp-modal__title" id="rsvpModalTitle">참석 의사 체크하기</h2>
+      <p class="rsvp-modal__lead" id="rsvpModalLead">한 분 한 분을 소중히 모실 수 있도록<br>참석 의사를 전해주시면 감사하겠습니다.</p>
+      <form class="rsvp-modal__form" id="rsvpForm" novalidate>
+        <div class="rsvp-field">
+          <div class="rsvp-field__label">
+            어느 분의 하객이신가요?
+            <span class="rsvp-field__req" aria-hidden="true">
+              <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="4" height="4" rx="2" fill="#E9CBCF"></rect></svg>
+            </span>
+          </div>
+          <div class="rsvp-seg" role="group" aria-label="신랑 또는 신부 하객">
+            <button type="button" class="rsvp-seg__btn is-active" data-rsvp-seg="guest" data-value="groom" aria-pressed="true"><span class="rsvp-seg__face">신랑</span></button>
+            <button type="button" class="rsvp-seg__btn" data-rsvp-seg="guest" data-value="bride" aria-pressed="false"><span class="rsvp-seg__face">신부</span></button>
+          </div>
+        </div>
+        <div class="rsvp-field">
+          <div class="rsvp-field__label">
+            참석하실 수 있나요?
+            <span class="rsvp-field__req" aria-hidden="true">
+              <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="4" height="4" rx="2" fill="#E9CBCF"></rect></svg>
+            </span>
+          </div>
+          <div class="rsvp-seg" role="group" aria-label="참석 여부">
+            <button type="button" class="rsvp-seg__btn is-active" data-rsvp-seg="attend" data-value="yes" aria-pressed="true"><span class="rsvp-seg__face">참석할게요</span></button>
+            <button type="button" class="rsvp-seg__btn" data-rsvp-seg="attend" data-value="no" aria-pressed="false"><span class="rsvp-seg__face">참석이 어려워요</span></button>
+          </div>
+        </div>
+        <div class="rsvp-field">
+          <label class="rsvp-field__label" for="rsvpName">
+            성함이 어떻게 되시나요?
+            <span class="rsvp-field__req" aria-hidden="true">
+              <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="4" height="4" rx="2" fill="#E9CBCF"></rect></svg>
+            </span>
+          </label>
+          <input class="rsvp-input" id="rsvpName" name="name" type="text" autocomplete="name" placeholder="참석자 본인 성함">
+        </div>
+        <div class="rsvp-field">
+          <div class="rsvp-field__label">추가 동행 인원이 있나요?</div>
+          <div class="rsvp-seg" role="group" aria-label="동행 인원">
+            <button type="button" class="rsvp-seg__btn is-active" data-rsvp-seg="companion" data-value="no" aria-pressed="true"><span class="rsvp-seg__face">없습니다</span></button>
+            <button type="button" class="rsvp-seg__btn" data-rsvp-seg="companion" data-value="yes" aria-pressed="false"><span class="rsvp-seg__face">있습니다</span></button>
+          </div>
+        </div>
+        <div class="rsvp-field">
+          <label class="rsvp-field__label" for="rsvpPhone4">동명이인 체크를 위한 번호를 알려주세요</label>
+          <input class="rsvp-input" id="rsvpPhone4" name="phone4" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="핸드폰 번호 뒤 4자리" autocomplete="one-time-code">
+        </div>
+        <button type="submit" class="rsvp-submit">체크 완료하기</button>
+      </form>
+    </div>
+  </div>
 
   <div class="viewer" id="galleryViewer" aria-hidden="true">
     <div class="viewer-panel" role="dialog" aria-modal="true" aria-label="갤러리 사진 보기">
@@ -751,14 +1031,14 @@
 
       async function loadGalleryImages() {
         var preferredOrdered = [
-          "../img/us/제시1.jpg",
-          "../img/us/제시2.jpg",
-          "../img/us/제시3.jpg",
-          "../img/us/제시4.jpg",
-          "../img/us/제시5.jpg",
-          "../img/us/제시6.jpg",
-          "../img/us/제시7.jpg",
-          "../img/us/제시8.jpg",
+          "img/us/제시1.jpg",
+          "img/us/제시2.jpg",
+          "img/us/제시3.jpg",
+          "img/us/제시4.jpg",
+          "img/us/제시5.jpg",
+          "img/us/제시6.jpg",
+          "img/us/제시7.jpg",
+          "img/us/제시8.jpg",
         ];
         var exts = ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG", "WEBP"];
         var candidates = [];
@@ -766,10 +1046,10 @@
         var j;
         for (i = 1; i <= 80; i += 1) {
           for (j = 0; j < exts.length; j += 1) {
-            candidates.push("../img/us/" + i + "." + exts[j]);
+            candidates.push("img/us/" + i + "." + exts[j]);
           }
         }
-        candidates.push("../img/us/main.jpg", "../img/us/main.png");
+        candidates.push("img/us/main.jpg", "img/us/main.png");
 
         var checked = await Promise.all(candidates.map(testImage));
         var rest = checked.filter(function (p) { return !!p; });
@@ -929,39 +1209,146 @@
           else panel.setAttribute("hidden", "");
         });
       });
+
+      // 청첩장 주소 복사
+      var inviteBtn = document.querySelector(".btn-copy-invite-url");
+      if (inviteBtn) {
+        var inviteUrl = "https://wedding-two-iota.vercel.app/";
+        var prevLabel = inviteBtn.getAttribute("aria-label") || "청첩장 주소 복사하기";
+        inviteBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          copyText(inviteUrl).then(function () {
+            inviteBtn.setAttribute("aria-label", "복사됨");
+            setTimeout(function () {
+              inviteBtn.setAttribute("aria-label", prevLabel);
+            }, 1500);
+          }).catch(function () {
+            alert("복사에 실패했습니다. 주소를 직접 선택해 복사해 주세요.");
+          });
+        });
+      }
     })();
   </script>
 
-  <!-- 카카오맵 - 지도 퍼가기: 로더 로드 완료 후 render (비동기 로드 시 daum 미정의 오류 방지) -->
-  <script charset="UTF-8">
+  <script>
     (function () {
-      function runRender() {
-        if (!window.daum || !daum.roughmap || !daum.roughmap.Lander) return false;
-        new daum.roughmap.Lander({
-          timestamp: "1774883666557",
-          key: "k94tz7aatwt",
-          mapWidth: "100%",
-          mapHeight: "360"
-        }).render();
-        return true;
+      var modal = document.getElementById("rsvpModal");
+      var overlay = document.getElementById("rsvpModalOverlay");
+      var openBtn = document.getElementById("rsvpModalOpen");
+      var closeBtn = document.getElementById("rsvpModalClose");
+      var form = document.getElementById("rsvpForm");
+      var nameInput = document.getElementById("rsvpName");
+      var phoneInput = document.getElementById("rsvpPhone4");
+      var lastFocus = null;
+
+      if (!modal || !overlay || !openBtn || !closeBtn || !form) return;
+
+      function activeSeg(group) {
+        var el = modal.querySelector('.rsvp-seg__btn.is-active[data-rsvp-seg="' + group + '"]');
+        return el ? el.getAttribute("data-value") : "";
       }
-      var s = document.createElement("script");
-      s.charset = "UTF-8";
-      s.className = "daum_roughmap_loader_script";
-      s.src = "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
-      s.onload = function () {
-        if (runRender()) return;
-        var n = 0;
-        var id = setInterval(function () {
-          n += 1;
-          if (runRender() || n > 40) clearInterval(id);
-        }, 50);
-      };
-      s.onerror = function () {
-        console.warn("카카오 지도 퍼가기 스크립트를 불러오지 못했습니다. http(s)로 페이지를 열었는지 확인해 주세요.");
-      };
-      document.body.appendChild(s);
+
+      function openModal() {
+        lastFocus = document.activeElement;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (nameInput) nameInput.focus();
+        else closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocus && typeof lastFocus.focus === "function") {
+          lastFocus.focus();
+        }
+      }
+
+      openBtn.addEventListener("click", function () {
+        openModal();
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      overlay.addEventListener("click", closeModal);
+
+      modal.querySelectorAll("[data-rsvp-seg]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var key = btn.getAttribute("data-rsvp-seg");
+          modal.querySelectorAll('[data-rsvp-seg="' + key + '"]').forEach(function (b) {
+            b.classList.remove("is-active");
+            b.setAttribute("aria-pressed", "false");
+          });
+          btn.classList.add("is-active");
+          btn.setAttribute("aria-pressed", "true");
+        });
+      });
+
+      if (phoneInput) {
+        phoneInput.addEventListener("input", function () {
+          phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 4);
+        });
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = (nameInput && nameInput.value) ? nameInput.value.trim() : "";
+        if (!name) {
+          alert("성함을 입력해 주세요.");
+          if (nameInput) nameInput.focus();
+          return;
+        }
+        var digits = phoneInput ? phoneInput.value.replace(/\D/g, "") : "";
+        if (digits.length > 0 && digits.length !== 4) {
+          alert("핸드폰 번호 뒤 4자리를 입력해 주세요.");
+          phoneInput.focus();
+          return;
+        }
+        var payload = {
+          guest: activeSeg("guest"),
+          attend: activeSeg("attend"),
+          name: name,
+          companion: activeSeg("companion"),
+          phoneLast4: digits || null,
+        };
+        console.log("RSVP", payload);
+        alert("참석 의사를 전달해 주셔서 감사합니다.");
+        form.reset();
+        modal.querySelectorAll("[data-rsvp-seg]").forEach(function (b) {
+          b.classList.remove("is-active");
+          b.setAttribute("aria-pressed", "false");
+        });
+        [["guest", "groom"], ["attend", "yes"], ["companion", "no"]].forEach(function (pair) {
+          var b = modal.querySelector('[data-rsvp-seg="' + pair[0] + '"][data-value="' + pair[1] + '"]');
+          if (b) {
+            b.classList.add("is-active");
+            b.setAttribute("aria-pressed", "true");
+          }
+        });
+        closeModal();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape") return;
+        if (!modal.classList.contains("is-open")) return;
+        closeModal();
+      });
     })();
+  </script>
+
+  <!-- 카카오맵 - 지도 퍼가기 (2. 설치 스크립트 / 3. 실행 스크립트) -->
+  <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+  <!-- 3. 실행 스크립트 -->
+  <script charset="UTF-8">
+    new daum.roughmap.Lander({
+      "timestamp": "1774890700711",
+      "key": "juqh49grivu",
+      "mapWidth": "640",
+      "mapHeight": "360"
+    }).render();
   </script>
 </body>
 </html>
