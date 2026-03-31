@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+  <meta name="color-scheme" content="light only">
   <title>강동현 ♥ 유하연 결혼합니다.</title>
   <meta name="description" content="2026년 7월 11일 토요일 오후 6시 30분, 아벤티움">
   <meta property="og:title" content="강동현 ♥ 유하연 결혼합니다.">
   <meta property="og:description" content="2026년 7월 11일 토요일 오후 6시 30분, 아벤티움">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://toourguest.com/cards/20251122">
   <meta name="theme-color" content="#f7dede">
   <link rel="stylesheet" href="/css/tailwind-like.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,6 +58,8 @@
       font-style: normal;
       font-display: swap;
       unicode-range:
+        U+0030-0039,
+        U+FF10-FF19,
         U+1100-11FF,
         U+3130-318F,
         U+AC00-D7AF;
@@ -87,6 +89,7 @@
     }
 
     html {
+      color-scheme: light only;
       line-height: 1.5;
       -webkit-text-size-adjust: 100%;
       -moz-tab-size: 4;
@@ -99,7 +102,7 @@
     }
 
     .font-suit {
-      font-family: Sparkle, serif;
+      font-family: KoreanHand, Sparkle, serif;
     }
 
     .antialiased {
@@ -120,8 +123,9 @@
     body {
       margin: 0;
       font-family: KoreanHand, Sparkle, serif;
-      background: #f7dede;
-      color: #111;
+      background: #f7dede !important;
+      color: #111 !important;
+      color-scheme: light only;
       -webkit-font-smoothing: antialiased;
       display: flex;
       justify-content: center;
@@ -166,14 +170,14 @@
       top: 55%;
       transform: translateY(-50%);
       text-align: center;
-      font-family: "Playfair Display", serif;
+      font-family: KoreanHand, "Playfair Display", serif;
       font-size: 52px;
       line-height: 1.1;
       padding: 0 16px;
     }
     .hero-date {
       margin-top: 14px;
-      font-family: Sparkle, serif;
+      font-family: KoreanHand, Sparkle, serif;
       font-size: 26px;
       line-height: 1.2;
       text-align: center;
@@ -187,7 +191,7 @@
     .section.pink { background: #fbefef; }
     .section.rose { background: #f4d2d2; }
     .headline {
-      font-family: "Playfair Display", serif;
+      font-family: KoreanHand, "Playfair Display", serif;
       font-size: 38px;
       letter-spacing: .06em;
       margin: 0 0 26px;
@@ -513,7 +517,7 @@
     }
     .fund-card__number {
       display: block;
-      font-family: Suit, ui-sans-serif, system-ui, sans-serif;
+      font-family: KoreanHand, Suit, ui-sans-serif, system-ui, sans-serif;
       font-size: 17px;
       font-weight: 500;
       color: #808080;
@@ -535,14 +539,14 @@
     .footer-copy {
       margin: 20px 0 5px;
       text-align: center;
-      font-family: Suit, ui-sans-serif, system-ui, sans-serif;
+      font-family: KoreanHand, Suit, ui-sans-serif, system-ui, sans-serif;
       font-size: 14px;
       color: #999;
     }
 
     /* RSVP 참석 의사 모달 */
     .rsvp-modal {
-      font-family: Pretendard, "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+      font-family: KoreanHand, Pretendard, "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
       position: fixed;
       inset: 0;
       z-index: 10050;
@@ -713,6 +717,329 @@
       outline-offset: 3px;
     }
 
+    /* 오프닝: 봉투에서 편지 꺼내기 */
+    body.envelope-intro-active {
+      overflow: hidden;
+    }
+    .envelope-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 100100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px 80px;
+      box-sizing: border-box;
+      background: linear-gradient(165deg, #fff6f6 0%, #ffecec 45%, #ffe0e0 100%);
+      font-family: KoreanHand, Sparkle, serif;
+      transition: opacity 0.55s ease, visibility 0.55s ease;
+    }
+    .envelope-intro.is-dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .envelope-intro__tagline {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      color: #c55a5a;
+      letter-spacing: 0.04em;
+    }
+    .envelope-intro__stage {
+      position: relative;
+      width: clamp(312px, 88vw, 408px);
+      height: 387px;
+      margin-top: 8px;
+      perspective: 1100px;
+      perspective-origin: 50% 42%;
+      transform-style: preserve-3d;
+    }
+    .envelope-intro__base {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 62%;
+      border-radius: 0 0 12px 12px;
+      background: linear-gradient(180deg, #ffc9c9 0%, #ffb2b2 48%, #ffa3a3 100%);
+      box-shadow: 0 14px 32px rgba(220, 100, 100, 0.38);
+      z-index: 1;
+    }
+    .envelope-intro__inner-fold {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 17%;
+      height: 52%;
+      background: linear-gradient(180deg, #ff9e9e 0%, #ff9090 100%);
+      clip-path: polygon(0 0, 50% 90%, 100% 0);
+      z-index: 2;
+      opacity: 0.96;
+    }
+    .envelope-intro__lift {
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      bottom: 26%;
+      height: 304px;
+      z-index: 3;
+      pointer-events: none;
+      animation: env-letter-out 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both;
+    }
+    .envelope-intro__letter {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      top: 14px;
+      bottom: 14px;
+      z-index: 4;
+      opacity: 1;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #fffefb 0%, #fff7fb 100%);
+      box-shadow: 0 4px 20px rgba(200, 90, 120, 0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      text-align: center;
+      box-sizing: border-box;
+      border: 1px solid rgba(255, 158, 188, 0.55);
+    }
+    .envelope-intro__decor {
+      position: absolute;
+      z-index: 6;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .envelope-intro__decor--heart {
+      color: #e84d7a;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+      line-height: 1;
+      animation: env-decor-bloom 0.78s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+    }
+    .envelope-intro__decor--heart-sm {
+      font-size: 1rem;
+      animation-delay: 0.98s;
+    }
+    .envelope-intro__decor--heart-md {
+      font-size: 1.35rem;
+      animation-delay: 1.02s;
+    }
+    .envelope-intro__decor--heart-lg {
+      font-size: 1.75rem;
+      animation-delay: 1.1s;
+    }
+    .envelope-intro__decor--h-tl {
+      left: -4%;
+      top: 10%;
+    }
+    .envelope-intro__decor--h-tr {
+      right: -2%;
+      top: 6%;
+    }
+    .envelope-intro__decor--h-bl {
+      left: -6%;
+      bottom: 14%;
+    }
+    .envelope-intro__decor--h-br {
+      right: -5%;
+      bottom: 18%;
+    }
+    .envelope-intro__decor--h-tc {
+      left: 50%;
+      top: -10%;
+      transform: translateX(-50%);
+      animation-name: env-decor-bloom-center;
+      animation-delay: 1.06s;
+    }
+    .envelope-intro__decor--flower {
+      width: 34px;
+      height: 34px;
+      animation: env-decor-bloom 0.82s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+    }
+    .envelope-intro__decor--f-ml {
+      left: -10%;
+      top: 38%;
+      animation-delay: 1.04s;
+    }
+    .envelope-intro__decor--f-mr {
+      right: -10%;
+      top: 42%;
+      animation-delay: 1.12s;
+    }
+    .envelope-intro__decor--f-bc {
+      left: 50%;
+      bottom: -8%;
+      transform: translateX(-50%);
+      animation-name: env-decor-bloom-center;
+      animation-delay: 1.18s;
+    }
+    @keyframes env-decor-bloom {
+      from {
+        opacity: 0;
+        transform: scale(0.15);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes env-decor-bloom-center {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.15);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+    }
+    .envelope-intro__letter-line {
+      font-size: 1.1rem;
+      color: #5c3d39;
+      letter-spacing: 0.06em;
+    }
+    .envelope-intro__letter-sub {
+      font-size: 1.5rem;
+      color: #b87878;
+    }
+    .envelope-intro__flap {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(62% + 6px);
+      background: linear-gradient(180deg, #ffe5e5 0%, #ffd4d4 35%, #ffb2b2 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: 50% 0;
+      z-index: 4;
+      box-shadow: 0 4px 16px rgba(210, 95, 95, 0.28);
+      transform-style: flat;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      animation: env-flap-open 1.22s cubic-bezier(0.34, 0.72, 0.32, 1) 0.22s forwards;
+    }
+    @keyframes env-flap-open {
+      0% {
+        opacity: 1;
+        visibility: visible;
+        transform: rotateX(0deg) translateY(1px);
+        box-shadow: 0 4px 16px rgba(210, 95, 95, 0.28);
+      }
+      12% {
+        opacity: 1;
+        transform: rotateX(-7deg) translateY(1px);
+      }
+      32% {
+        opacity: 1;
+        transform: rotateX(-32deg) translateY(0);
+        box-shadow: 0 8px 22px rgba(210, 95, 95, 0.22);
+      }
+      52% {
+        opacity: 1;
+        transform: rotateX(-68deg) translateY(0);
+        box-shadow: 0 8px 18px rgba(200, 85, 85, 0.14);
+      }
+      65% {
+        opacity: 0.35;
+        transform: rotateX(-88deg) translateY(0);
+      }
+      82% {
+        opacity: 0;
+        transform: rotateX(-98deg) translateY(0);
+        box-shadow: none;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: rotateX(-105deg) translateY(0);
+        box-shadow: none;
+      }
+    }
+    @keyframes env-letter-out {
+      from {
+        transform: translateY(40%) scale(0.93);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-38%) scale(1);
+        opacity: 1;
+      }
+    }
+    .envelope-intro__skip {
+      position: fixed;
+      bottom: max(24px, env(safe-area-inset-bottom, 24px));
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      border: 1px solid rgba(224, 110, 150, 0.5);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: #a5416a;
+      font: inherit;
+      font-size: 0.88rem;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .envelope-intro__skip:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .envelope-intro__skip:focus-visible {
+      outline: 2px solid #ebadad;
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .envelope-intro__flap,
+      .envelope-intro__lift {
+        animation: none;
+      }
+      .envelope-intro__lift {
+        transform: translateY(-38%);
+        opacity: 1;
+      }
+      .envelope-intro__flap {
+        opacity: 0;
+        visibility: hidden;
+        transform: rotateX(0deg);
+      }
+      .envelope-intro__decor {
+        animation: none !important;
+        opacity: 1;
+        transform: scale(1);
+      }
+      .envelope-intro__decor--h-tc,
+      .envelope-intro__decor--f-bc {
+        transform: translateX(-50%) scale(1);
+      }
+    }
+
+    /* 스크롤 시 블록이 서서히 나타남 */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .scroll-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .scroll-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     @media (max-width: 360px) {
       .hero-title { font-size: 42px; }
       .headline { font-size: 32px; }
@@ -721,6 +1048,50 @@
   </style>
 </head>
 <body>
+  <div id="envelopeIntro" class="envelope-intro" role="dialog" aria-modal="true" aria-labelledby="envelopeIntroTitle">
+    <p id="envelopeIntroTitle" class="envelope-intro__tagline">청첩장이 도착했어요</p>
+    <div class="envelope-intro__stage" aria-hidden="true">
+      <div class="envelope-intro__base"></div>
+      <div class="envelope-intro__inner-fold"></div>
+      <div class="envelope-intro__lift">
+        <span class="envelope-intro__decor envelope-intro__decor--heart envelope-intro__decor--heart-md envelope-intro__decor--h-tl" aria-hidden="true">♥</span>
+        <span class="envelope-intro__decor envelope-intro__decor--heart envelope-intro__decor--heart-sm envelope-intro__decor--h-tr" aria-hidden="true">♥</span>
+        <span class="envelope-intro__decor envelope-intro__decor--heart envelope-intro__decor--heart-lg envelope-intro__decor--h-tc" aria-hidden="true">♥</span>
+        <span class="envelope-intro__decor envelope-intro__decor--heart envelope-intro__decor--heart-sm envelope-intro__decor--h-bl" aria-hidden="true">♥</span>
+        <span class="envelope-intro__decor envelope-intro__decor--heart envelope-intro__decor--heart-md envelope-intro__decor--h-br" aria-hidden="true">♥</span>
+        <svg class="envelope-intro__decor envelope-intro__decor--flower envelope-intro__decor--f-ml" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="11" r="5" fill="#ff9ec4" opacity="0.95"/>
+          <circle cx="11" cy="16" r="5" fill="#ffa8c8"/>
+          <circle cx="21" cy="16" r="5" fill="#ff9bb8"/>
+          <circle cx="13" cy="22" r="5" fill="#ffb3cf"/>
+          <circle cx="19" cy="22" r="5" fill="#ff8fb8"/>
+          <circle cx="16" cy="17" r="4" fill="#fff0f5"/>
+        </svg>
+        <svg class="envelope-intro__decor envelope-intro__decor--flower envelope-intro__decor--f-mr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="11" r="5" fill="#ffb3cf"/>
+          <circle cx="11" cy="16" r="5" fill="#ff9ec4"/>
+          <circle cx="21" cy="16" r="5" fill="#ffa8c8"/>
+          <circle cx="13" cy="22" r="5" fill="#ff8fb8"/>
+          <circle cx="19" cy="22" r="5" fill="#ff9bb8"/>
+          <circle cx="16" cy="17" r="4" fill="#fff5f8"/>
+        </svg>
+        <svg class="envelope-intro__decor envelope-intro__decor--flower envelope-intro__decor--f-bc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="10" r="4.5" fill="#ff8fb8"/>
+          <circle cx="11" cy="15" r="4.5" fill="#ff9ec4"/>
+          <circle cx="21" cy="15" r="4.5" fill="#ffb3cf"/>
+          <circle cx="16" cy="19" r="4.2" fill="#ffa8c8"/>
+          <circle cx="16" cy="15" r="3.2" fill="#fff0f5"/>
+        </svg>
+        <div class="envelope-intro__letter">
+          <span class="envelope-intro__letter-line">강동현 ♥ 유하연</span>
+          <span class="envelope-intro__letter-sub">Wedding Invitation</span>
+        </div>
+      </div>
+      <div class="envelope-intro__flap"></div>
+    </div>
+    <button type="button" class="envelope-intro__skip">건너뛰기</button>
+  </div>
+
   <main class="wrap">
     <section class="hero">
       <div class="top-date"></div>
@@ -741,7 +1112,10 @@
       <p class="small">저희의 설레는 시작을 따뜻한 마음으로 축복해 주신다면</p>
       <p class="small">더없이 감사한 기억으로 간직하겠습니다.</p>
       <p style="margin-top:28px;">신랑 강동현 · 신부 유하연</p>
-    </section>
+      
+      <div style="text-align:center; margin-top: 40px; margin-bottom: -6px; background:#fff;">
+        <img src="/img/꽃베너.png" alt="꽃베너" style="display:inline-block; width:70%; max-width:200px; height:auto;">
+      </div>    </section>
 
     <section class="section dark">
       <h2 class="headline">WEDDING DAY</h2>
@@ -1010,6 +1384,90 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (function () {
+      var intro = document.getElementById("envelopeIntro");
+      if (!intro) return;
+
+      function dismiss() {
+        if (intro.classList.contains("is-dismissed")) return;
+        intro.classList.add("is-dismissed");
+        document.body.classList.remove("envelope-intro-active");
+        setTimeout(function () {
+          if (intro.parentNode) intro.parentNode.removeChild(intro);
+          var mainEl = document.querySelector("main.wrap");
+          if (mainEl && mainEl.focus) {
+            mainEl.setAttribute("tabindex", "-1");
+            mainEl.focus({ preventScroll: true });
+          }
+        }, 580);
+      }
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        intro.remove();
+        return;
+      }
+
+      document.body.classList.add("envelope-intro-active");
+
+      var skip = intro.querySelector(".envelope-intro__skip");
+      if (skip) {
+        skip.addEventListener("click", dismiss);
+      }
+
+      intro.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") dismiss();
+      });
+
+      setTimeout(dismiss, 3650);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var wrap = document.querySelector("main.wrap");
+      if (!wrap) return;
+      var sel = ":scope > section:not(.hero), :scope > footer, :scope > div";
+      var nodes = wrap.querySelectorAll(sel);
+      if (!nodes.length) return;
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        nodes.forEach(function (el) {
+          el.classList.add("scroll-reveal", "is-visible");
+        });
+        return;
+      }
+
+      nodes.forEach(function (el) {
+        el.classList.add("scroll-reveal");
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        nodes.forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+        return;
+      }
+
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            } else {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        },
+        { root: null, rootMargin: "0px 0px -6% 0px", threshold: 0.08 },
+      );
+
+      nodes.forEach(function (el) {
+        io.observe(el);
+      });
+    })();
+  </script>
 
   <script>
     (function () {
