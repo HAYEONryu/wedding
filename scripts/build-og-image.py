@@ -1,11 +1,11 @@
-"""Generate public/img/og-800x400.png from opening.png (cover crop, LANCZOS)."""
+"""Generate public/img/og_opening.png (800×400) from opening.png (cover crop, LANCZOS)."""
 from pathlib import Path
 
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 src = ROOT / "public" / "img" / "opening.png"
-out = ROOT / "public" / "img" / "og-800x400.png"
+out = ROOT / "public" / "img" / "og_opening.png"
 
 im = Image.open(src)
 if im.mode not in ("RGB", "RGBA"):
