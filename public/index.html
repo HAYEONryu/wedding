@@ -15,8 +15,8 @@
   <meta property="og:image" content="https://donghahappyday.vercel.app/img/opening.png">
   <meta property="og:image:secure_url" content="https://donghahappyday.vercel.app/img/opening.png">
   <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1856">
-  <meta property="og:image:height" content="2475">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="400">
   <meta property="og:image:alt" content="강동현 ♥ 유하연 웨딩 청첩장">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="강동현 ♥ 유하연 결혼합니다.">
@@ -634,17 +634,17 @@
       z-index: 1;
     }
 
-    /* 오프닝 이미지: 뚜껑·편지 연출 후 편지 위에 겹쳐 노출 */
-    .opening-image {
+    /* 오프닝: 카카오 링크 썸네일 권장 비율(800×400과 동일 2:1) 프레임 + object-fit: cover */
+    .opening-image-wrap {
       position: absolute;
       top: 70%;
       left: 50%;
       width: 80%;
-      height: auto;
-      object-fit: contain;
+      aspect-ratio: 2 / 1;
       transform: translate(-50%, -50%);
       z-index: 10;
       border-radius: 5px;
+      overflow: hidden;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -652,6 +652,13 @@
       -webkit-user-drag: none;
       animation: fadeInOpening 1s ease-in-out forwards;
       animation-delay: 1.0s;
+    }
+    .opening-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     /* 봉투 앞면 (V자 모양 절개) */
@@ -797,7 +804,9 @@
       </div>
       <div class="envelope-front"></div>
       <div class="envelope-flap"></div>
-      <img class="opening-image" src="/img/opening.png" alt="" decoding="async">
+      <div class="opening-image-wrap">
+        <img class="opening-image" src="/img/opening.png" alt="" decoding="async">
+      </div>
     </div>
   </div>
 
