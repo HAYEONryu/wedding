@@ -14,6 +14,7 @@ module.exports = merge(common, {
         { from: 'public/img', to: 'img' },
         { from: 'public/fonts', to: 'fonts' },
         { from: 'public/css', to: 'css' },
+        { from: 'public/uploadphoto.html', to: 'uploadphoto.html', noErrorOnMissing: false },
         { from: 'public/js/vendor', to: 'js/vendor', noErrorOnMissing: true },
         { from: 'public/icon.svg', to: 'icon.svg', noErrorOnMissing: true },
         { from: 'public/favicon.ico', to: 'favicon.ico', noErrorOnMissing: true },
