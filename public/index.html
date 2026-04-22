@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
   <meta name="color-scheme" content="light only">
   <title>강동현 ♥ 유하연 결혼합니다.</title>
-  <meta name="description" content="2026년 6월 6일 토요일 오후 14시, 아벤티움">
+  <meta name="description" content="2026년 6월 6일 토요일 14시, 아벤티움">
   <link rel="canonical" href="https://donghahappyday.vercel.app/">
   <meta property="og:url" content="https://donghahappyday.vercel.app/">
   <meta property="og:title" content="강동현 ♥ 유하연 결혼합니다.">
-  <meta property="og:description" content="2026년 6월 6일 토요일 오후 14시, 아벤티움">
+  <meta property="og:description" content="2026년 6월 6일 토요일 14시, 아벤티움">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:image" content="https://donghahappyday.vercel.app/img/og1.jpg">
@@ -20,7 +20,7 @@
   <meta property="og:image:alt" content="강동현 ♥ 유하연 청첩장">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="강동현 ♥ 유하연 결혼합니다.">
-  <meta name="twitter:description" content="2026년 6월 6일 토요일 오후 14시, 아벤티움">
+  <meta name="twitter:description" content="2026년 6월 6일 토요일 14시, 아벤티움">
   <meta name="twitter:image" content="https://donghahappyday.vercel.app/img/og1.jpg">
   <meta name="twitter:image:alt" content="강동현 ♥ 유하연 웨딩 청첩장">
   <meta name="theme-color" content="#f7dede" media="(prefers-color-scheme: light)">
@@ -177,6 +177,13 @@
       margin-top: 14px;
       font-family: KoreanHand, Sparkle, serif;
       font-size: 26px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .hero-time {
+      margin-top: 6px; /* date랑 너무 붙지 않게 살짝만 간격 */
+      font-family: KoreanHand, Sparkle, serif;
+      font-size: 22px; /* 26px → 아주 조금만 작게 */
       line-height: 1.2;
       text-align: center;
     }
@@ -897,7 +904,7 @@
   <main class="wrap">
     <section class="hero">
       <div class="top-date"></div>
-      <div class="hero-title">Our Wedding Day!<div class="hero-date">2026. 06. 06 Sat<br>14:00 PM</div></div>
+      <div class="hero-title">Our Wedding Day!<div class="hero-date">2026. 06. 06 Sat<br class="hero-time">14 : 00 </div></div>
       <div class="bottom-names">
         <div>강동현</div>
         <div>유하연</div>
@@ -922,7 +929,7 @@
     <section class="section dark">
       <h2 class="headline">WEDDING DAY</h2>
       <p style="font-size: 1.5em;">2026년 6월 6일<br></p>
-      <p style="font-size: 1.1em;">토요일 | 오후 14시</p>
+      <p style="font-size: 1.1em;">토요일 | 14시</p>
       <div class="calendar" style="max-width: 340px; box-shadow: none; border-radius: 0; border-left: 0; border-right: 0;">
         <p style="text-align:center; font-size:30px; letter-spacing:.12em; color:#666; margin-bottom:8px;">June</p>
         <div style="height:1px;background:#000;opacity:.1;margin:8px 0 26px;"></div>
@@ -1292,7 +1299,7 @@
       var viewerNext = document.getElementById("viewerNext");
       var imagePaths = [];
       var currentIndex = 0;
-      var GALLERY_THUMB_MAX = 6;
+      var GALLERY_THUMB_MAX = 9;
 
       function testImage(path) {
         return new Promise(function (resolve) {
@@ -1305,14 +1312,26 @@
 
       async function loadGalleryImages() {
         var preferredOrdered = [
-          "/img/us/제시1.jpg",
-          "/img/us/제시2.jpg",
-          "/img/us/제시3.jpg",
-          "/img/us/제시4.jpg",
-          "/img/us/제시5.jpg",
-          "/img/us/제시6.jpg",
-          "/img/us/제시7.jpg",
-          "/img/us/제시8.jpg",
+          "/img/us/b컷 (1).jpg",
+          "/img/us/b컷 (2).jpg",
+          "/img/us/b컷 (3).jpg",
+          "/img/us/b컷 (4).jpg",
+          "/img/us/b컷 (5).jpg",
+          "/img/us/b컷 (6).jpg",
+          "/img/us/b컷 (7).jpg",
+          "/img/us/b컷 (8).jpg",
+          "/img/us/b컷 (9).jpg",
+          "/img/us/b컷 (10).jpg",
+          "/img/us/b컷 (11).jpg",
+          "/img/us/b컷 (12).jpg",
+          "/img/us/b컷 (13).jpg",
+          "/img/us/b컷 (14).jpg",
+          "/img/us/b컷 (15).jpg",
+          "/img/us/b컷 (16).jpg",
+          "/img/us/b컷 (17).jpg",
+          "/img/us/b컷 (18).jpg",
+          "/img/us/b컷 (19).jpg",
+          "/img/us/b컷 (20).jpg"
         ];
         var preferredChecks = await Promise.all(preferredOrdered.map(testImage));
         var prefix = preferredChecks.filter(function (p) { return !!p; });
