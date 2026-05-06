@@ -248,17 +248,25 @@
       position: relative;
       color: #fff !important;
       font-weight: 400;
-      z-index: 0;
+      /* z-index를 양수로 변경하여 새로운 쌓임 맥락을 생성합니다 */
+      z-index: 1;
+      /* 아이폰에서 텍스트가 중앙에 오도록 명시적 설정 */
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
+
     .day-love::before {
       content: "♥";
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -35%);
+      /* 아이폰 렌더링 엔진에 맞춰 위치 미세 조정 */
+      transform: translate(-50%, -50%);
       color: #b77b7b;
       font-size: 38.5px;
       line-height: 1;
+      /* 숫자가 하트보다 위에 오도록 z-index를 낮게 설정하되 양수 유지 */
       z-index: -1;
     }
     .gallery {
