@@ -246,28 +246,40 @@
     }
     .day-love {
       position: relative;
-      color: #fff !important;
-      font-weight: 400;
-      /* z-index를 양수로 변경하여 새로운 쌓임 맥락을 생성합니다 */
-      z-index: 1;
-      /* 아이폰에서 텍스트가 중앙에 오도록 명시적 설정 */
-      display: inline-flex;
+      /* 안쪽 span(숫자) 정렬을 위한 설정 */
+      display: flex;
       justify-content: center;
       align-items: center;
+      /* 전체 캘린더 칸 크기에 맞춤 (필요시 조절) */
+      min-height: 40px;
+      cursor: default;
     }
 
+    /* 배경 하트 설정 */
     .day-love::before {
       content: "♥";
       position: absolute;
       left: 50%;
       top: 50%;
-      /* 아이폰 렌더링 엔진에 맞춰 위치 미세 조정 */
       transform: translate(-50%, -50%);
       color: #b77b7b;
-      font-size: 38.5px;
+      font-size: 38px; /* 스크린샷 비율에 맞춘 크기 */
       line-height: 1;
-      /* 숫자가 하트보다 위에 오도록 z-index를 낮게 설정하되 양수 유지 */
-      z-index: -1;
+      /* 하트를 가장 아래 레이어로 */
+      z-index: 1;
+      pointer-events: none; /* 클릭 간섭 방지 */
+    }
+
+    /* 숫자(6) 설정 */
+    .day-love span {
+      position: relative;
+      /* 하트보다 위에 오도록 설정 */
+      z-index: 2;
+      color: #ffffff !important;
+      font-weight: bold;
+      /* 아이폰에서 숫자가 하트 중앙에 오도록 미세 조정 */
+      display: block;
+      margin-top: -2px;
     }
     .gallery {
       margin-top: 18px;
@@ -944,7 +956,7 @@
         <div class="calendar-grid" style="margin-top:0; gap:14px 6px;">
             <div style="color:#f87171;">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
             <!-- 첫째 줄 (일요일 1칸 비움) -->
-            <div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div class="day-love">6</div>
+            <div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div class="day-love"><span>6</span></div>
             <!-- 둘째 줄 -->
             <div style="color:#f87171;">7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div>
             <!-- 셋째 줄 -->
