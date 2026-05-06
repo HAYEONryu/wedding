@@ -244,42 +244,41 @@
       font-size: 14px;
       font-weight: 500;
     }
+    /* 캘린더 칸 자체의 스타일 */
     .day-love {
       position: relative;
-      /* 안쪽 span(숫자) 정렬을 위한 설정 */
       display: flex;
       justify-content: center;
       align-items: center;
-      /* 전체 캘린더 칸 크기에 맞춤 (필요시 조절) */
-      min-height: 40px;
-      cursor: default;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
     }
 
-    /* 배경 하트 설정 */
-    .day-love::before {
-      content: "♥";
+    /* 배경 하트: 별도 클래스로 분리 */
+    .heart-bg {
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
       color: #b77b7b;
-      font-size: 38px; /* 스크린샷 비율에 맞춘 크기 */
+      font-size: 38px; /* 크기 유지 */
+      font-style: normal; /* i 태그 기본 기울임 해제 */
       line-height: 1;
-      /* 하트를 가장 아래 레이어로 */
-      z-index: 1;
-      pointer-events: none; /* 클릭 간섭 방지 */
+      z-index: 1; /* 하트를 아래로 */
+      pointer-events: none;
     }
 
-    /* 숫자(6) 설정 */
-    .day-love span {
-      position: relative;
-      /* 하트보다 위에 오도록 설정 */
-      z-index: 2;
+    /* 숫자 6: 별도 클래스로 분리 */
+    .day-number {
+      position: relative; /* 하트보다 위에 오도록 설정 */
+      z-index: 2; /* 숫자를 위로 */
       color: #ffffff !important;
-      font-weight: bold;
-      /* 아이폰에서 숫자가 하트 중앙에 오도록 미세 조정 */
+      font-weight: 400;
+      line-height: 1;
       display: block;
-      margin-top: -2px;
+      /* 아이폰 폰트 렌더링에 따른 미세한 위치 보정 */
+      transform: translateY(1px);
     }
     .gallery {
       margin-top: 18px;
@@ -956,7 +955,11 @@
         <div class="calendar-grid" style="margin-top:0; gap:14px 6px;">
             <div style="color:#f87171;">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
             <!-- 첫째 줄 (일요일 1칸 비움) -->
-            <div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div class="day-love"><span>6</span></div>
+            <div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+          <div class="day-love">
+            <i class="heart-bg">♥</i>
+            <span class="day-number">6</span>
+          </div>
             <!-- 둘째 줄 -->
             <div style="color:#f87171;">7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div>
             <!-- 셋째 줄 -->
