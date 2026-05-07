@@ -142,7 +142,7 @@
       min-height: 620px;
       background:
         linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.22)),
-        url("/img/image1.jpg");
+        url("/img/us/청첩장메인사진.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -939,13 +939,13 @@
       <p class="small">저희에게 찾아온 가장 아름다운 기적입니다.</p>
       <p class="small">서로 다른 길을 걸어온 두 사람이 만나</p>
       <p class="small">이제는 '우리'라는 이름으로 같은 내일을 꿈꾸려 합니다.</p>
-      <p class="small">저희의 설레는 시작을 따뜻한 마음으로 축복해 주신다면</p>
+      <p class="small">저희 설레는 시작을 따뜻한 마음으로 축복해 주신다면</p>
       <p class="small">더없이 감사한 기억으로 간직하겠습니다.</p>
       <p style="margin-top:28px;">신랑 강동현 · 신부 유하연</p>
-
       <div style="text-align:center; margin-top: 40px; margin-bottom: -6px; background:#fff;">
         <img src="/img/꽃베너.png" alt="꽃 장식 배너 일러스트" style="display:inline-block; width:70%; max-width:200px; height:auto;">
-      </div>    </section>
+      </div>
+    </section>
 
     <section class="section dark">
       <h2 class="headline">WEDDING DAY</h2>
@@ -1337,26 +1337,42 @@
 
       async function loadGalleryImages() {
         var preferredOrdered = [
-          "/img/us/b컷 (1).jpg",
-          "/img/us/b컷 (2).jpg",
-          "/img/us/b컷 (3).jpg",
-          "/img/us/b컷 (4).jpg",
-          "/img/us/b컷 (5).jpg",
-          "/img/us/b컷 (6).jpg",
-          "/img/us/b컷 (7).jpg",
-          "/img/us/b컷 (8).jpg",
-          "/img/us/b컷 (9).jpg",
-          "/img/us/b컷 (10).jpg",
-          "/img/us/b컷 (11).jpg",
-          "/img/us/b컷 (12).jpg",
-          "/img/us/b컷 (13).jpg",
-          "/img/us/b컷 (14).jpg",
-          "/img/us/b컷 (15).jpg",
-          "/img/us/b컷 (16).jpg",
-          "/img/us/b컷 (17).jpg",
-          "/img/us/b컷 (18).jpg",
-          "/img/us/b컷 (19).jpg",
-          "/img/us/b컷 (20).jpg"
+          "/img/us/A컷 (1).jpg",
+          "/img/us/A컷 (2).jpg",
+          "/img/us/A컷 (3).jpg",
+          "/img/us/A컷 (4).jpg",
+          "/img/us/A컷 (5).jpg",
+          "/img/us/A컷 (6).jpg",
+          "/img/us/A컷 (7).jpg",
+          "/img/us/A컷 (8).jpg",
+          "/img/us/A컷 (9).jpg",
+          "/img/us/A컷 (10).jpg",
+          "/img/us/A컷 (11).jpg",
+          "/img/us/A컷 (12).jpg",
+          "/img/us/A컷 (13).jpg",
+          "/img/us/A컷 (14).jpg",
+          "/img/us/A컷 (15).jpg",
+          "/img/us/A컷 (16).jpg",
+          "/img/us/A컷 (17).jpg",
+          "/img/us/A컷 (18).jpg",
+          "/img/us/A컷 (19).jpg",
+          "/img/us/A컷 (20).jpg",
+          "/img/us/A컷 (21).jpg",
+          "/img/us/A컷 (22).jpg",
+          "/img/us/A컷 (23).jpg",
+          "/img/us/A컷 (24).jpg",
+          "/img/us/A컷 (25).jpg",
+          "/img/us/A컷 (26).jpg",
+          "/img/us/A컷 (27).jpg",
+          "/img/us/A컷 (28).jpg",
+          "/img/us/A컷 (29).jpg",
+          "/img/us/A컷 (30).jpg",
+          "/img/us/A컷 (31).jpg",
+          "/img/us/A컷 (32).jpg",
+          "/img/us/A컷 (33).jpg",
+          "/img/us/A컷 (34).jpg",
+          "/img/us/A컷 (35).jpg",
+          "/img/us/A컷 (36).jpg"
         ];
         var preferredChecks = await Promise.all(preferredOrdered.map(testImage));
         var prefix = preferredChecks.filter(function (p) { return !!p; });
