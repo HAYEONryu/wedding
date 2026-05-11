@@ -582,6 +582,51 @@
       width: 18px;
       height: 18px;
     }
+    /* 마음 전하실 곳 안내 문구 스타일 */
+    .fund-notice {
+      margin: 20px 20px 30px;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.05); /* 어두운 배경에 은은한 박스 */
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .fund-notice p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      word-break: keep-all;
+    }
+
+    .fund-notice strong {
+      color: #b77b7b; /* 강조 포인트 컬러 (기존 하트 컬러와 통일) */
+      font-weight: 500;
+    }
+
+    /* 계좌 카드 내부 스타일 수정 */
+    .fund-card__label {
+      font-size: 12px;
+      color: #b77b7b;
+      margin-right: 8px;
+      font-weight: 600;
+    }
+
+    .fund-card__name {
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .fund-card__acct {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+    }
     .fund-wrap {
       margin-top: 28px;
       max-width: 420px;
@@ -642,10 +687,6 @@
       font-size: 15px;
       color: #333;
       margin-bottom: 14px;
-    }
-    .fund-card__name {
-      font-weight: 600;
-      letter-spacing: .04em;
     }
     .fund-card__acct {
       display: flex;
@@ -1060,23 +1101,27 @@
 
 
     <section class="section dark">
-      <h2 class="headline" style="font-size:30px;">마음 전하실 곳(계좌번호)</h2>
-      <p class="small">소중한 토요일, 전국 각지에서 전해주신<br>따뜻한 마음에 진심으로 감사드립니다.</p>
-      <p class="small" style="margin-top:12px">부득이 비대면으로 축하를 전하고자<br>하시는 분들을 위해 계좌번호를 남깁니다.</br>
-      *강낙천/ 김영주 손님은 신랑 대표 계좌, 유기석/정호진(정현정) 손님께서는 신부 대표 계좌 이용 부탁드립니다.</p>
+      <h2 class="headline" style="font-size:30px;">마음 전하실 곳</h2>
+      <p class="small">소중한 날, 전해주시는 따뜻한 마음에<br>진심으로 감사드립니다.</p>
+
+      <div class="fund-notice">
+        <p>강낙천 · 김영주 님의 하객분들께서는 <strong>신랑측 계좌</strong>를,<br>
+          유기석 · 정호진 님의 하객분들께서는 <strong>신부측 계좌</strong>를 이용 부탁드립니다.</p>
+      </div>
+
       <div class="fund-wrap">
         <div class="fund-acc" data-fund-acc>
           <button type="button" class="fund-acc__head" aria-expanded="false" id="fundHeadGroom">
-            <span>신랑측에게</span>
+            <span>신랑측 계좌번호</span>
             <span class="fund-acc__chev" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
           </button>
           <div class="fund-acc__panel" id="fundPanelGroom" hidden>
             <div class="fund-card">
               <div class="fund-card__row">
-                <span>신랑</span>
-                <span class="fund-card__name">강동현 신랑 / 강낙천, 김영주 손님</span>
+                <span class="fund-card__label">신랑측</span>
+                <span class="fund-card__name">강동현 (부 강낙천 · 모 김영주)</span>
               </div>
               <div class="fund-card__acct">
                 <div class="fund-card__acct-info" id="fundAcctCopyGroom">
@@ -1093,18 +1138,19 @@
             </div>
           </div>
         </div>
+
         <div class="fund-acc" data-fund-acc>
           <button type="button" class="fund-acc__head" aria-expanded="false" id="fundHeadBride">
-            <span>신부측에게</span>
+            <span>신부측 계좌번호</span>
             <span class="fund-acc__chev" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
           </button>
           <div class="fund-acc__panel" id="fundPanelBride" hidden>
             <div class="fund-card">
               <div class="fund-card__row">
-                <span>신부</span>
-                <span class="fund-card__name">유하연 신부 / 유기석 , 정호진(정현정) </span>
+                <span class="fund-card__label">신부측</span>
+                <span class="fund-card__name">유하연 (부 유기석 · 모 정호진)</span>
               </div>
               <div class="fund-card__acct">
                 <div class="fund-card__acct-info" id="fundAcctCopyBride">
@@ -1127,7 +1173,7 @@
     <section class="section">
       <h2 class="headline">사진 업로드</h2>
       <p class="small">소중한 발걸음으로 축하해 주셔서 감사합니다.</p>
-      <p class="small">오늘의 행복한 순간을 담은 사진을 </p>
+      <p class="small">결혼식의 행복한 순간을 담은 사진을 </p>
       <p class="small">아래 QR을 통해 업로드해 주세요.</p>
       <p class="small">한 분 한 분의 정성 어린 사진들이 저희 부부에게 평생 잊지 못할 선물이 될 것입니다.</p>
       <p style="margin-top:28px;">신랑 강동현 · 신부 유하연</p>
