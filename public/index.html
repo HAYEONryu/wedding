@@ -586,15 +586,15 @@
     .fund-notice {
       margin: 20px 20px 30px;
       padding: 15px;
-      background-color: rgba(255, 255, 255, 0.05); /* 어두운 배경에 은은한 박스 */
+      background-color: #f9f9f9; /* 밝은 배경으로 변경하여 검은 글씨가 잘 보이게 함 */
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid #eee;
     }
 
     .fund-notice p {
       font-size: 13px;
       line-height: 1.7;
-      color: rgba(255, 255, 255, 0.8);
+      color: #444444; /* 가독성 높은 짙은 회색 */
       margin: 0;
       word-break: keep-all;
     }
@@ -607,15 +607,30 @@
     /* 계좌 카드 내부 스타일 수정 */
     .fund-card__label {
       font-size: 12px;
-      color: #b77b7b;
+      color: #b77b7b; /* 기존 하트 컬러와 통일하여 일관성 유지 */
       margin-right: 8px;
       font-weight: 600;
     }
 
+    /* 성함 텍스트가 절대로 줄바꿈 되지 않도록 수정 */
     .fund-card__name {
       font-size: 14px;
-      letter-spacing: -0.02em;
-      color: #ffffff;
+      /* 자간을 최대한 줄여 공간을 확보합니다 */
+      letter-spacing: -0.05em;
+      color: #222222;
+      font-weight: 500;
+      /* 줄바꿈 금지 */
+      white-space: nowrap;
+      /* 가로 너비가 부족할 경우 글자 크기를 자동으로 줄여주는 설정 (iOS/최신 브라우저 지원) */
+      inline-size: max-content;
+    }
+
+    /* 아주 작은 화면(아이폰 SE 등)에서도 한 줄 유지를 위해 폰트 크기 미세 조정 */
+    @media (max-width: 375px) {
+      .fund-card__name {
+        font-size: 12.5px;
+        letter-spacing: -0.06em;
+      }
     }
 
     .fund-card__acct {
@@ -680,13 +695,14 @@
       padding: 18px 16px 16px;
       text-align: left;
     }
+    /* 이름이 들어가는 컨테이너의 여백을 최소화하여 공간 확보 */
     .fund-card__row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-size: 15px;
-      color: #333;
-      margin-bottom: 14px;
+      justify-content: flex-start;
+      gap: 4px; /* 간격을 더 좁힘 */
+      width: 100%;
+      overflow: visible; /* 잘리지 않도록 설정 */
     }
     .fund-card__acct {
       display: flex;
@@ -1106,7 +1122,7 @@
 
       <div class="fund-notice">
         <p>강낙천 · 김영주 님의 하객분들께서는 <strong>신랑측 계좌</strong>를,<br>
-          유기석 · 정호진 님의 하객분들께서는 <strong>신부측 계좌</strong>를 이용 부탁드립니다.</p>
+          유기석 · 정호진(정현정) 님의 하객분들께서는 <strong>신부측 계좌</strong>를 이용 부탁드립니다.</p>
       </div>
 
       <div class="fund-wrap">
@@ -1150,7 +1166,9 @@
             <div class="fund-card">
               <div class="fund-card__row">
                 <span class="fund-card__label">신부측</span>
-                <span class="fund-card__name">유하연 (부 유기석 · 모 정호진)</span>
+                <span class="fund-card__name">
+                  유하연 (부 유기석 · 모 <small style="font-size: 0.9em;">정호진(정현정)</small>)
+                </span>
               </div>
               <div class="fund-card__acct">
                 <div class="fund-card__acct-info" id="fundAcctCopyBride">
